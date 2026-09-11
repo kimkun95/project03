@@ -1,0 +1,31 @@
+# 환경변수 / 시크릿
+.env
+
+# 가상환경
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+
+# 수집 스크립트 산출물 (재수집 가능한 원본 데이터, 저장소에 커밋하지 않음)
+collect_state.json
+matches.jsonl
+*.jsonl
+
+# 대용량/원본 데이터, 모델 산출물
+data/
+models/
+*.csv
+*.parquet
+*.pkl
+*.joblib
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

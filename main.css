@@ -1,0 +1,318 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* 전체 배경 및 기본 폰트 */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Pretendard', sans-serif !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+/* 📐 중앙 레이아웃 너비 확장 (1100px) */
+div[data-testid="stAppViewContainer"] > .main .block-container {
+    max-width: 1100px !important;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+}
+
+/* 메인 타이틀 박스 */
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-align: center;
+    padding: 2.2rem 1rem;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 2px solid #cbd5e1 !important;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================
+   🔍 검색 영역 전체
+   ========================================== */
+
+div[data-testid="stForm"] {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+    box-shadow: none !important;
+}
+/* 검색 영역의 컬럼을 가운데 정렬 */
+div[data-testid="stHorizontalBlock"] {
+    align-items: center !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* ==========================================
+   🔍 Streamlit 검색창 스타일
+   ========================================== */
+div[data-testid="stTextInput"] {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stTextInput"] input {
+    height: 40px !important;
+    min-height: 40px !important;
+
+    padding: 0 16px !important;
+
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+
+    box-sizing: border-box !important;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* placeholder */
+div[data-testid="stTextInput"] input::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1 !important;
+}
+
+/* 검색창 포커스 */
+div[data-testid="stTextInput"] input:focus {
+    border: 2px solid #10b981 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(16, 185, 129, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.03) !important;
+
+    outline: none !important;
+}
+
+/* ==========================================
+   🔍 진단하기 버튼
+   ========================================== */
+
+div[data-testid="stFormSubmitButton"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stFormSubmitButton"] button {
+    height: 40px !important;
+    min-height: 40px !important;
+
+    margin: 0 !important;
+
+    border-radius: 10px !important;
+    border: 2px solid #047857 !important;
+
+    background: linear-gradient(
+        135deg,
+        #10b981 0%,
+        #059669 100%
+    ) !important;
+
+    color: #ffffff !important;
+
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 4px 12px rgba(16, 185, 129, 0.25) !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* 버튼 hover */
+
+div[data-testid="stFormSubmitButton"] button:hover {
+    transform: translateY(-1px) !important;
+
+    background: linear-gradient(
+        135deg,
+        #059669 0%,
+        #047857 100%
+    ) !important;
+
+    box-shadow:
+        0 6px 16px rgba(16, 185, 129, 0.35) !important;
+}
+
+/* 버튼 클릭 */
+div[data-testid="stFormSubmitButton"] button:active {
+    transform: translateY(0) !important;
+}
+
+/* ==========================================
+   ✨ 결과 페이지 각 박스별 테두리(Border) 적용
+   ========================================== */
+
+/* 히어로 배너 박스 */
+.result-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 2.2rem 2rem;
+    border-radius: 20px;
+    border: 2px solid #334155;
+    color: #ffffff;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
+}
+
+.result-hero-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.result-hero-title span {
+    color: #34d399;
+}
+
+.result-hero-sub {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
+/* '다시 검색' 버튼 박스 */
+div[data-testid="stButton"] > button {
+    border-radius: 12px !important;
+    border: 2px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    color: #334155 !important;
+    font-weight: 700 !important;
+    height: 48px !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 6px #00000008 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    border-color: #10b981 !important;
+    color: #059669 !important;
+    background-color: #ecfdf5 !important;
+}
+
+/* 메트릭 카드 박스 */
+div[data-testid="stMetric"] {
+    background: #ffffff !important;
+    border: 2px solid #cbd5e1 !important;
+    border-radius: 16px !important;
+    padding: 18px 22px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;    
+}
+
+div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
+    color: #059669 !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+
+    white-space: nowrap !important;
+    overflow: visible !important;
+}
+
+div[data-testid="stMetric"] div[data-testid="stMetricLabel"] {
+    color: #64748b !important;
+    font-weight: 600 !important;
+}
+
+/* 탭 바 */
+button[data-baseweb="tab"] {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #64748b !important;
+    padding: 12px 20px !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    color: #10b981 !important;
+    border-bottom-color: #10b981 !important;
+    border-bottom-width: 3px !important;
+}
+
+/* 정보 카드 박스 스타일 */
+.info-card-styled {
+    background-color: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 1.4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.custom-list ul {
+    margin: 0 !important;
+    padding-left: 1.2rem !important;
+}
+
+.custom-list li {
+    margin-bottom: 0.6rem !important;
+    color: #334155 !important;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* 경고 박스 스타일 */
+.highlight-box-danger {
+    background-color: #fff1f2;
+    border: 2px solid #fecdd3;
+    border-left: 6px solid #f43f5e;
+    color: #9f1239;
+    padding: 1.2rem 1.4rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.05);
+}
+
+/* TAB3 오른쪽 작은 패스/슈팅 궁합 카드 숫자 */
+.mini-fit-card {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 16px 12px;
+    min-height: 96px;
+    box-sizing: border-box;
+}
+
+.mini-fit-label {
+    color: #475569;
+    font-size: 0.80rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.mini-fit-value {
+    color: #059669;
+    font-size: 1.42rem;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.analysis-detail-card {
+    margin-top: 1.1rem;
+}
+
+.analysis-warning-box {
+    margin-top: 1.05rem;
+    background: #fff9db;
+    border: 1.5px solid #fde68a;
+    border-radius: 14px;
+    color: #a16207;
+    padding: 1rem 1.05rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 10px rgba(250, 204, 21, 0.08);
+}
