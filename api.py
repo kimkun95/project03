@@ -15,7 +15,8 @@ API_KEY = (os.getenv("NEXON_API_KEY") or "").strip()
 
 if not API_KEY:
     raise RuntimeError(
-        "NEXON_API_KEY가 설정되어 있지 않습니다. .env 파일을 확인해 주세요."
+        "NEXON_API_KEY가 설정되어 있지 않습니다. "
+        "로컬에서는 .env, Streamlit Cloud에서는 Secrets 설정을 확인해 주세요."
     )
 
 # live_diagnosis.py가 style 폴더에 있는 경우도 지원
