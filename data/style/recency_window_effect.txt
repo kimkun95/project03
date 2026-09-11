@@ -1,0 +1,7 @@
+=== 유저당 사용 경기 수(recency window)별 실루엣 비교 ===
+모집단 고정(정상종료 50경기 이상 유저), 유저별 최근 N경기만으로 비율 feature 재계산.
+
+      window  n_users  pass_best_k  pass_silhouette  heading_best_k  heading_silhouette  shot_location_best_k  shot_location_silhouette
+     최근 30경기      137            4           0.2930               4              0.5750                     2                    0.5996
+     최근 50경기      137            3           0.3009               5              0.6023                     3                    0.5738
+전체(baseline)      137            3           0.3093               2              0.5888                     2                    0.5649

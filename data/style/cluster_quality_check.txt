@@ -1,0 +1,25 @@
+=== 스타일 진단 군집 품질 사후 검증 (원본 데이터 드릴다운) ===
+군집 평균 feature 값만으로는 '스타일 차이'와 '저활동/이상치'를 구분할 수 없어,
+군집 라벨을 원본 경기 데이터(match_team_data.csv)에 다시 연결해 확인한다.
+
+--- pass 모델 ---
+ cluster  n_matches  n_users  avg_division  no_shoot_pct  no_pass_pct  win_pct  draw_pct  loss_pct
+       0       5833       67       1084.24          0.14          0.0    59.71      4.59     35.69
+       1       3953       47       1196.13          0.18          0.0    57.55      5.39     37.06
+       2       1891       23        994.39          0.00          0.0    61.18      4.23     34.58
+
+--- heading 모델 ---
+ cluster  n_matches  n_users  avg_division  no_shoot_pct  no_pass_pct  win_pct  draw_pct  loss_pct
+       0       2997       35       1063.73          0.00          0.0    56.72      4.50     38.77
+       1       8680      102       1122.71          0.17          0.0    60.08      4.91     35.01
+
+--- shot_location 모델 ---
+ cluster  n_matches  n_users  avg_division  no_shoot_pct  no_pass_pct  win_pct  draw_pct  loss_pct
+       0       5679       66       1059.11          0.12          0.0    57.40      4.51     38.09
+       1       5998       71       1153.45          0.13          0.0    60.94      5.09     33.98
+
+[요주의 기준] 슛 0회 경기 비율이 5.0%를 넘는 군집은 '슛 스타일'이 아니라 '저활동/이상치'로 해석될 여지가 있어 별도 확인이 필요하다.
+[정상] pass 모델은 모든 군집에서 슛 0회 경기 비율이 기준 이내
+[정상] heading 모델은 모든 군집에서 슛 0회 경기 비율이 기준 이내
+[정상] shot_location 모델은 모든 군집에서 슛 0회 경기 비율이 기준 이내
+[참고] avg_division(티어)이 군집 간 크게 벌어져 있으면, 이 군집 차이가 '스타일'이 아니라 '실력'을 반영했을 가능성도 함께 고려해야 한다 (data-schema.md: long/through_pass_ratio가 division과 상관관계가 있음이 이미 확인됨).

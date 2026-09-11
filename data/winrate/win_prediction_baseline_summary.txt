@@ -1,0 +1,39 @@
+=== 승부예측 Baseline 모델 요약 ===
+feature: ['attack_avg_score', 'mid_avg_score', 'defense_avg_score', 'gk_avg_score', 'tier']
+[sklearn Pipeline 계수] (StandardScaler로 표준화된 스케일 - 저장/서빙에 쓰는 모델)
+  intercept: 0.0239
+  attack_avg_score: 0.0466 (표준화 스케일)
+  mid_avg_score: -0.0500 (표준화 스케일)
+  defense_avg_score: 0.0490 (표준화 스케일)
+  gk_avg_score: 0.0292 (표준화 스케일)
+  tier: 0.0701 (표준화 스케일)
+[statsmodels 계수/p-value] (원 스케일 - 리포트 전용, 저장/서빙에는 안 씀)
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                 result   No. Observations:                 3265
+Model:                          Logit   Df Residuals:                     3259
+Method:                           MLE   Df Model:                            5
+Date:                Mon, 07 Sep 2026   Pseudo R-squ.:                0.001713
+Time:                        18:17:16   Log-Likelihood:                -2259.0
+converged:                       True   LL-Null:                       -2262.9
+Covariance Type:            nonrobust   LLR p-value:                    0.1704
+=====================================================================================
+                        coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+const                -2.5793      2.510     -1.028      0.304      -7.499       2.340
+attack_avg_score      0.0148      0.012      1.198      0.231      -0.009       0.039
+mid_avg_score        -0.0193      0.015     -1.289      0.197      -0.049       0.010
+defense_avg_score     0.0214      0.017      1.246      0.213      -0.012       0.055
+gk_avg_score          0.0025      0.003      0.773      0.439      -0.004       0.009
+tier                  0.0002   8.68e-05      1.956      0.050    -3.6e-07       0.000
+=====================================================================================
+train 표본 수: 3265
+validation 표본 수: 1089 (정답 570건)
+validation accuracy: 0.5234
+validation 50% 우연 대비 이항검정 p-value: 0.1297
+test: 아직 평가 안 함 (EVALUATE_TEST_SET=False — feature/모델 확정 전) — validation만 보고 판단할 것.
+player_stats_final.csv spId 매칭률: 99.1%
+[참고] sklearn 계수는 표준화된 스케일, statsmodels 계수는 원 스케일이라 크기가 서로 다를 수 있다. 방향(부호)이 같은지만 참고하고, 유의성 판단은 statsmodels p-value를 쓴다.
+[참고] feature/모델을 확정하기 전까지는 이 validation 결과만 보고 판단한다. test셋은 EVALUATE_TEST_SET=True로 바꿔 최종 확정 후 딱 한 번만 확인한다 — 여러 버전을 시도하며 test까지 매번 보면 test가 사실상 validation처럼 쓰여 최종 수치가 부풀려진다(test set leakage).
+[한계] player_stats_final.csv의 스탯 수치가 강화단계(spGrade)를 반영한 값인지 기본(0강) 값인지 확인되지 않았다. 확인 전까지는 강화단계를 무시하고 spId만으로 매칭한 근사치로 취급한다.
+[한계] 유저 실력(손가락) 차이는 feature로 통제하지 못하며, tier로 부분적으로만 간접 반영된다.

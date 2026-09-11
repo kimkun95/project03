@@ -1,0 +1,55 @@
+=== 플레이스타일 진단(K-means) Baseline 요약 ===
+유저 최소 표본 경기 수(MIN_MATCHES_PER_USER): 50
+군집화 대상 유저 수: 137
+
+[설계 결정] 패스/헤딩/슛위치 3개 모델을 독립적으로 군집화한다. 6개 feature를 한
+공간에서 통합 군집화하면 실루엣 0.23~0.25, 패스+슛(2개 feature) 통합도 0.36에
+그쳤는데, 헤딩축/슛위치축까지 마저 쪼개니 각각 0.59/0.56까지 개선됐다.
+dribble_intensity/possession/block_ratio 등도 시도했지만 전부 실루엣을 낮춰
+(실력·경기 흐름과 얽혀 있어 스타일 신호를 희석시킴) 최종 feature에서 뺐다
+(preprocess_style.py docstring 참고).
+
+--- pass 모델 ---
+feature: ['short_pass_ratio', 'long_pass_ratio', 'through_pass_ratio', 'driven_ground_pass_ratio']
+  k=2: silhouette=0.3021
+  k=3: silhouette=0.3093  <- 선택
+  k=4: silhouette=0.2783
+  k=5: silhouette=0.2504
+  k=6: silhouette=0.2768
+[선택된 k] 3
+[군집별 feature 평균]
+ pass_style_type  short_pass_ratio  long_pass_ratio  through_pass_ratio  driven_ground_pass_ratio  n_users
+               0          0.763330         0.036475            0.133917                  0.051118       67
+               1          0.665851         0.058746            0.201090                  0.057505       47
+               2          0.621208         0.046478            0.144766                  0.168337       23
+
+--- heading 모델 ---
+feature: ['heading_shoot_ratio']
+  k=2: silhouette=0.5888  <- 선택
+  k=3: silhouette=0.5502
+  k=4: silhouette=0.5633
+  k=5: silhouette=0.5740
+  k=6: silhouette=0.5658
+[선택된 k] 2
+[군집별 feature 평균]
+ heading_style_type  heading_shoot_ratio  n_users
+                  0             0.216087       35
+                  1             0.095724      102
+
+--- shot_location 모델 ---
+feature: ['out_penalty_shoot_ratio']
+  k=2: silhouette=0.5649  <- 선택
+  k=3: silhouette=0.5158
+  k=4: silhouette=0.5584
+  k=5: silhouette=0.5519
+  k=6: silhouette=0.5515
+[선택된 k] 2
+[군집별 feature 평균]
+ shot_location_style_type  out_penalty_shoot_ratio  n_users
+                        0                 0.159064       66
+                        1                 0.262598       71
+
+[한계] 최소 표본 경기 수 하한선(MIN_MATCHES_PER_USER)이 팀 논의로 확정되지 않아 임시값을 쓰고 있다 (preprocess_style.py 참고).
+[한계] 실루엣 점수가 낮은 모델(패스)은 유저의 플레이 성향이 몇 개 뚜렷한 그룹으로 딱 떨어지기보다 연속적인 스펙트럼에 가깝다는 뜻으로 해석하며, 완전히 분리된 유형이 아니라 '가장 가까운 성향' 정도의 관찰적 진단으로 제시한다.
+[한계] long_pass_ratio/through_pass_ratio가 division(티어)과 상관관계가 있음을 확인했다 — 관찰적 진단이라는 설계 선택에 따른 의도적 트레이드오프이며 정규화로 보정하지 않는다 (style/README.md 참고).
+[참고] 헤딩(방식)과 박스 안 슈팅(위치)은 반대 개념이 아니다 — 헤딩은 대부분 박스 안 가까운 거리에서 나오므로 두 값이 자연히 같이 높게 나올 수 있다. 헤딩축은 '방식'(헤딩 vs 발), 슛위치축은 '위치'(박스 안 vs 중거리)라는 서로 다른 축으로 해석해야 한다.

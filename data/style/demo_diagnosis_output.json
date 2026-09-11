@@ -1,0 +1,122 @@
+{
+  "ouid": "afe3fe8b1d6e483e21600e282305e626",
+  "user_style": {
+    "short_pass_ratio": 0.5725165285797975,
+    "long_pass_ratio": 0.045610511339861076,
+    "through_pass_ratio": 0.14545150221775882,
+    "driven_ground_pass_ratio": 0.21432755879153068,
+    "heading_shoot_ratio": 0.12727272727272726,
+    "out_penalty_shoot_ratio": 0.17762237762237762,
+    "dribble_intensity": 82.1574074074074,
+    "in_penalty_shoot_ratio": 0.8125874125874126
+  },
+  "pass_cluster": 2,
+  "heading_cluster": 1,
+  "shot_location_cluster": 0,
+  "squad_match_result": "승",
+  "squad_scores": {
+    "slots": [
+      {
+        "sp_id": 868107715,
+        "sp_position": 6,
+        "pos_name": "LCB",
+        "pass_fit": NaN,
+        "shoot_fit": NaN,
+        "position_fit": NaN,
+        "note": null
+      },
+      {
+        "sp_id": 851223697,
+        "sp_position": 7,
+        "pos_name": "LB",
+        "pass_fit": NaN,
+        "shoot_fit": NaN,
+        "position_fit": NaN,
+        "note": null
+      },
+      {
+        "sp_id": 848231478,
+        "sp_position": 26,
+        "pos_name": "LS",
+        "pass_fit": 0.6891929711428434,
+        "shoot_fit": 0.781817497909389,
+        "position_fit": 0.76329259255608,
+        "note": null
+      },
+      {
+        "sp_id": 206177683,
+        "sp_position": 0,
+        "pos_name": "GK",
+        "pass_fit": NaN,
+        "shoot_fit": NaN,
+        "position_fit": NaN,
+        "note": null
+      },
+      {
+        "sp_id": 851247229,
+        "sp_position": 3,
+        "pos_name": "RB",
+        "pass_fit": NaN,
+        "shoot_fit": NaN,
+        "position_fit": NaN,
+        "note": null
+      },
+      {
+        "sp_id": 861001114,
+        "sp_position": 19,
+        "pos_name": "LAM",
+        "pass_fit": 0.7866510755280187,
+        "shoot_fit": 0.8218024508737031,
+        "position_fit": 0.797196488131724,
+        "note": null
+      },
+      {
+        "sp_id": 848009676,
+        "sp_position": 24,
+        "pos_name": "RS",
+        "pass_fit": 0.7046912120821405,
+        "shoot_fit": 0.8048615161557863,
+        "position_fit": 0.7848274553410572,
+        "note": null
+      },
+      {
+        "sp_id": 861191189,
+        "sp_position": 11,
+        "pos_name": "LDM",
+        "pass_fit": 0.8016310565935802,
+        "shoot_fit": NaN,
+        "position_fit": 0.8016310565935802,
+        "note": null
+      },
+      {
+        "sp_id": 868005589,
+        "sp_position": 17,
+        "pos_name": "RAM",
+        "pass_fit": 0.7807223213431609,
+        "shoot_fit": 0.797101412477821,
+        "position_fit": 0.7856360486835589,
+        "note": null
+      },
+      {
+        "sp_id": 868001419,
+        "sp_position": 4,
+        "pos_name": "RCB",
+        "pass_fit": NaN,
+        "shoot_fit": NaN,
+        "position_fit": NaN,
+        "note": null
+      },
+      {
+        "sp_id": 845135455,
+        "sp_position": 9,
+        "pos_name": "RDM",
+        "pass_fit": 0.7881274778915118,
+        "shoot_fit": NaN,
+        "position_fit": 0.7881274778915118,
+        "note": null
+      }
+    ],
+    "squad_fit_score": 0.7867851865329186
+  },
+  "sentence": "당신은 드리븐그라운드패스 위주 · 박스 안(인패널티) 위주 · 발슛 위주(헤딩 적은 편) 스타일입니다. 현재 스쿼드 궁합 점수는 0.79(1.0 만점)이며, LS 포지션의 궁합이 가장 낮습니다(0.76) — 이 자리에 맞는 스탯을 가진 카드를 고려해보세요."
+}
