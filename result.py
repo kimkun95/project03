@@ -299,22 +299,9 @@ def show():
             with analysis_col:
                 st.markdown(
                     f"""
-                    <div style="
-                        display: flex;
-                        align-items: center;
-                        gap: 7px;
-                        white-space: nowrap;
-                        margin-bottom: 6px;
-                    ">
-                        <span style="font-size: 22px;">👤</span>
-                        <span style="
-                            font-size: 22px;
-                            font-weight: 700;
-                            line-height: 1.2;
-                            color: #0f172a;
-                        ">
-                            {html.escape(target_name)}
-                        </span>
+                    <div class="player-identity-row">
+                        <span class="player-identity-icon">👤</span>
+                        <span class="player-identity-name">{html.escape(target_name)}</span>
                     </div>
                     """,
                     unsafe_allow_html=True,
