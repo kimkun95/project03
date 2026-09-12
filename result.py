@@ -5,7 +5,6 @@ import streamlit as st
 from api import diagnose
 from board import draw_board
 from util import (
-    PASS_STYLE_LABELS,
     error_stop,
     extract_style_summary,
     fit_status,
@@ -108,45 +107,33 @@ def show():
     with tab1:
         st.subheader("팀 플레이스타일 분석")
 
-        # K-means가 분류한 패스 군집 번호(0/1/2)를 가져옴
-        pass_cluster = result.get("pass_cluster")
-        pass_style_name = PASS_STYLE_LABELS.get(
-            pass_cluster,
-            f"패스 군집 {pass_cluster}" if pass_cluster is not None else "분석 불가",
+        summary = html.escape(extract_style_summary(result))
+
+        st.markdown(
+            f"""
+            <div class="info-card-styled">
+                <b>💡 AI 플레이스타일 진단</b><br>
+                <span style="color:#475569;">{summary}</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
-
-        col_a, col_b = st.columns([1.25, 2])
-
-        with col_a:
-            st.metric(
-                label="주요 패스 스타일",
-                value=pass_style_name,
-            )
-
-        with col_b:
-            summary = html.escape(extract_style_summary(result))
-            st.markdown(
-                f"""
-                <div class="info-card-styled">
-                    <b>💡 AI 플레이스타일 진단</b><br>
-                    <span style="color:#475569;">{summary}</span>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
 
         st.write("")
         st.markdown("##### 📈 실제 경기 기반 스타일 지표")
 
         m1, m2, m3 = st.columns(3)
+
         m1.metric(
             "숏패스 비율",
             to_percent(user_style.get("short_pass_ratio")),
         )
+
         m2.metric(
             "스루패스 비율",
             to_percent(user_style.get("through_pass_ratio")),
         )
+
         m3.metric(
             "드리븐 패스 비율",
             to_percent(user_style.get("driven_ground_pass_ratio")),
